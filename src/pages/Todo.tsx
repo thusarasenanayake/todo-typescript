@@ -2,6 +2,7 @@ import React, {
   ChangeEvent,
   FormEvent,
   Reducer,
+  useEffect,
   useReducer,
   useState,
 } from 'react';
@@ -11,15 +12,25 @@ enum Actions {
   TOGGLE,
   ADD,
 }
-interface Props {
-  initialTodos: Array<Todo>;
-}
+interface Props {}
 interface TodoAction {
   type: Actions;
   payload: {};
 }
 
-const Todo: React.FC<Props> = ({ initialTodos }) => {
+function saveToLocalStorage(key: string, value: Array<Todo>) {
+  const jsonString = JSON.stringify(value);
+  localStorage.setItem(key, jsonString);
+}
+
+function getFromLocalStorage(key: string) {
+  const todosLocal = localStorage.getItem('todos');
+  if (todosLocal) {
+    return JSON.parse(todosLocal);
+  } else return [];
+}
+
+const Todo: React.FC<Props> = () => {
   // ----- handlers -----
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -36,7 +47,6 @@ const Todo: React.FC<Props> = ({ initialTodos }) => {
         type: Actions.ADD,
         payload: { title: newTodo, completed: false },
       });
-
       setNewTodo('');
     }
   };
@@ -75,8 +85,15 @@ const Todo: React.FC<Props> = ({ initialTodos }) => {
     }
   };
 
-  const [todos, dispatch] = useReducer(todoReducer, initialTodos);
+  const [todos, dispatch] = useReducer(todoReducer, [], () =>
+    getFromLocalStorage('todos')
+  );
+
   const [newTodo, setNewTodo] = useState<string>('');
+
+  useEffect(() => {
+    saveToLocalStorage('todos', todos);
+  }, [todos]);
 
   return (
     <div className="container">
