@@ -96,43 +96,66 @@ const Todo: React.FC<Props> = () => {
   }, [todos]);
 
   return (
-    <div className="container">
-      <div className="todo">
-        <h1>Todos</h1>
-
-        <form className="flex" onSubmit={handleSubmit}>
-          <input
-            className="md"
-            type="text"
-            value={newTodo}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setNewTodo(e.target.value)
-            }
-          />
-          <button className="btn m-2" type="submit">
-            Add todo
-          </button>
-        </form>
-        <ul>
-          {todos.map((todo: Todo, index: number) => (
-            <li className="p-1 lead grid" key={index}>
-              <label className={todo.completed ? 'line-through' : undefined}>
+    <>
+      <div className="row mt-4">
+        <div className="col-md-12">
+          <div className="card px-3">
+            <div className="card-body">
+              <h4 className="card-title">Awesome Todo list</h4>
+              <form onSubmit={handleSubmit} className="d-flex my-3">
                 <input
-                  type="checkbox"
-                  className="m-1"
-                  checked={todo.completed}
-                  onChange={() => handleToggle(index)}
+                  type="text"
+                  value={newTodo}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                    setNewTodo(e.target.value)
+                  }
+                  className="form-control"
+                  placeholder="What do you need to do today?"
                 />
-                {todo.title}
-              </label>
-              <button className="btn " onClick={() => handleDelete(todo)}>
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
+                <button className="btn btn-success" type="submit">
+                  Add
+                </button>
+              </form>
+              <ul className="d-flex flex-column-reverse">
+                {todos.map((todo: Todo, index: number) => (
+                  <li className="list-group-item border-0" key={index}>
+                    <div className="d-flex justify-content-between">
+                      {todo.completed ? (
+                        <label className="form-check-label lead text-decoration-line-through">
+                          <input
+                            className="checkbox m-2"
+                            type="checkbox"
+                            checked={todo.completed}
+                            onChange={() => handleToggle(index)}
+                          />
+                          {todo.title}
+                        </label>
+                      ) : (
+                        <label className="form-check-label lead">
+                          <input
+                            className="checkbox m-2"
+                            type="checkbox"
+                            checked={todo.completed}
+                            onChange={() => handleToggle(index)}
+                          />
+                          {todo.title}
+                        </label>
+                      )}
+                      <button
+                        className="p-2 btn btn-outline-light"
+                        onClick={() => handleDelete(todo)}
+                      >
+                        <span>❌</span>
+                      </button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

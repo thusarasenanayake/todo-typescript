@@ -3,3 +3,30 @@
   padding: 40px;
   background-color: rgb(209, 205, 201);
 }
+
+.typed-out {
+  overflow: hidden;
+  font-size: 1.75rem;
+  border-right: 0.15em solid orange;
+  white-space: nowrap;
+  animation: typing 3s steps(30, end) forwards, blink 0.5s infinite;
+  width: 0;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 28%;
+  }
+}
+
+@keyframes blink {
+  from {
+    border-color: transparent;
+  }
+  to {
+    border-color: orange;
+  }
+}

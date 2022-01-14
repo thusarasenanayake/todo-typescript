@@ -4,7 +4,10 @@ interface Props {}
 const Home: React.FC<Props> = () => {
   return (
     <div>
-      <h1>Home</h1>
+      <div className="container mt-3">
+        <h1>Hello there!</h1>
+        <div className="typed-out">Your awesome Todo list.</div>
+      </div>
     </div>
   );
 };

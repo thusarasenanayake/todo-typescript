@@ -1,10 +1,13 @@
-# Getting Started with Create React App
+# React To-do List (using TypeScript)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple React app build with TypeScript.
+-  Add, remove items
+- Data persistence with local storage
 
 ## Available Scripts
-
 In the project directory, you can run:
+
+> **If npm install failed, remove package-lock.json and try again.**
 
 ### `npm start`
 
@@ -39,8 +42,15 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Contributing
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Acknowledgements
+- [Typewriter Effect](https://codepen.io/jeffC/pen/oNeXvXG "Typewriter Effect ")
+
