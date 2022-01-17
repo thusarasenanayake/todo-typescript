@@ -1,5 +1,6 @@
 {
-  "name": "todo",
+  "name": "todo-typescript",
+  "description": "Simple to-do list with React, Typescript ",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://thusarasenanayake.github.io/todo-typescript",
